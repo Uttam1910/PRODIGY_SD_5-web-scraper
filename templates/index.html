@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body takes the full height of the viewport */
+        }
+        h1 {
+            color: #343a40;
+            text-align: center;
+        }
+        .product-card {
+            margin-bottom: 30px;
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        .product-card img {
+            width: 100%;
+            height: auto;
+            max-height: 250px;  /* Adjusted max-height for better visibility */
+            object-fit: cover;   /* Maintain aspect ratio */
+        }
+        .card-body {
+            background-color: #fff;
+            border-radius: 0 0 10px 10px; /* Rounded corners at the bottom */
+        }
+        .card-title {
+            font-size: 1.25rem;
+            color: #007bff; /* Bootstrap primary color */
+        }
+        .btn-primary {
+            width: 100%; /* Full width button */
+        }
+        .btn-success {
+            margin-top: 20px;
+            width: 100%; /* Full width button */
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #343a40;
+            color: white;
+            margin-top: auto; /* Push the footer to the bottom */
+        }
+        .content {
+            flex: 1; /* Allow the content to grow and fill the available space */
+        }
+    </style>
+</head>
+<body>
+    <div class="container content">
+        <h1 class="mt-5">Product Scraper</h1>
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="url">Enter the URL of the section to scrape:</label>
+                <input type="text" class="form-control" id="url" name="url" placeholder="Enter URL here" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Scrape</button>
+        </form>
+        
+        {% if products %}
+        <h2 class="mt-5">Scraped Products</h2>
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-4 product-card">
+                <div class="card">
+                    <img src="{{ product['Image URL'] }}" alt="Product Image" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product["Product Name"] }}</h5>
+                        <p class="card-text">Price: ₹{{ product["Price"] }}</p>
+                        <p class="card-text">Rating: {{ product["Rating"] }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <form method="POST" action="/download_csv">
+            <input type="hidden" name="products_data" value="{{ products }}">
+            <button type="submit" class="btn btn-success">Download CSV</button>
+        </form>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Product Scraper. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
