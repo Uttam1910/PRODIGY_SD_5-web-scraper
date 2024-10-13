@@ -16,7 +16,7 @@ A simple web scraper built with Flask that extracts product information from a g
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/product-scraper.git
+   git clone https://github.com/Uttam1910/product-scraper.git
    cd product-scraper
 2. Install the required packages:
    ```bash
