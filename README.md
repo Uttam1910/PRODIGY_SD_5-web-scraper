@@ -7,6 +7,14 @@ A simple web scraper built with Flask that extracts product information from a g
 - Displays product information in a user-friendly format
 - Allows users to download the scraped data as a CSV file
 
+
+## Adding Screenshots
+You can include screenshots of your application to showcase its features and user interface. To do this, follow these steps:
+![image](https://github.com/user-attachments/assets/87dbb4e3-26a9-49e7-992d-a26943a9cb6b)
+![image](https://github.com/user-attachments/assets/baec2b74-8ece-4b27-9abe-51b855ddc32c)
+![image](https://github.com/user-attachments/assets/4fddf7f1-161d-4b9a-b710-d3925b8a6ce8)
+
+
 ## Requirements
 - Python 3.x
 - Flask
